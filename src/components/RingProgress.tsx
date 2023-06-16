@@ -2,7 +2,7 @@
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import Svg, {Circle} from "react-native-svg";
-import Animated, {useAnimatedProps, useSharedValue, withSpring, withTiming} from "react-native-reanimated";
+import Animated, {useAnimatedProps, useSharedValue, withTiming} from "react-native-reanimated";
 
 type RingProgressProps = {
   radius?: number;
