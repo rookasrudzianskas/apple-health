@@ -22,6 +22,14 @@ const RingProgress = ({radius = 100, strokeWidth = 20}: RingProgressProps) => {
           r={innerRadius}
           stroke={color}
           strokeWidth={strokeWidth}
+          opacity={0.2}
+        />
+        <Circle
+          cx={radius}
+          cy={radius}
+          r={innerRadius}
+          stroke={color}
+          strokeWidth={strokeWidth}
         />
       </Svg>
     </View>

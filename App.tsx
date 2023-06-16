@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 25,
     flexWrap: 'wrap',
+    marginTop: 80,
   }
 });
