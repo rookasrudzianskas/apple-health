@@ -6,11 +6,12 @@ import Svg, {Circle, Rect} from "react-native-svg";
 type RingProgressProps = {
   radius?: number;
   strokeWidth?: number;
+  progress?: number;
 }
 
 const color = "#EE0F55"
 
-const RingProgress = ({radius = 100, strokeWidth = 35}: RingProgressProps) => {
+const RingProgress = ({radius = 100, strokeWidth = 35, progress}: RingProgressProps) => {
   const innerRadius = radius - strokeWidth / 2;
   const circumference = innerRadius * 2 * Math.PI;
 
@@ -29,12 +30,13 @@ const RingProgress = ({radius = 100, strokeWidth = 35}: RingProgressProps) => {
           cx={radius}
           cy={radius}
           r={innerRadius}
+          originX={radius}
+          originY={radius}
           stroke={color}
           strokeWidth={strokeWidth}
-          strokeDasharray={[circumference * 0.2, circumference]}
+          strokeDasharray={[circumference * progress, circumference]}
           strokeLinecap={'round'}
           rotation={-90}
-          origin={`${radius}, ${radius}`}
         />
       </Svg>
     </View>

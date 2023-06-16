@@ -6,7 +6,9 @@ import RingProgress from "./src/components/RingProgress";
 export default function App() {
   return (
     <View style={styles.container}>
-      <RingProgress />
+      <RingProgress
+        progress={0.25}
+      />
       <View style={styles.values}>
         <Value label={'Steps'} value={'43243'} />
         <Value label={'Distance'} value={'1.43km'} />
