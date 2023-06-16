@@ -53,7 +53,7 @@ const RingProgress = ({radius = 100, strokeWidth = 35, progress}: RingProgressPr
           {...circleDefaultProps}
         />
       </Svg>
-      <AntDesign style={{position: 'absolute', alignSelf: 'center', top: 7}} name="arrowright" size={35} color="black" />
+      <AntDesign style={{position: 'absolute', alignSelf: 'center', top: strokeWidth * 0.1}} name="arrowright" size={strokeWidth * 0.8} color="black" />
     </View>
   );
 };
