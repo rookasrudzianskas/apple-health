@@ -1,8 +1,8 @@
 //@ts-nocheck
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import Svg, {Circle, Rect} from "react-native-svg";
-import Animated, {useAnimatedProps} from "react-native-reanimated";
+import {View} from 'react-native';
+import Svg, {Circle} from "react-native-svg";
+import Animated, {useAnimatedProps, useSharedValue} from "react-native-reanimated";
 
 type RingProgressProps = {
   radius?: number;
@@ -18,8 +18,10 @@ const RingProgress = ({radius = 100, strokeWidth = 35, progress}: RingProgressPr
   const innerRadius = radius - strokeWidth / 2;
   const circumference = innerRadius * 2 * Math.PI;
 
+  const fill = useSharedValue(0);
+
   const animatedProps = useAnimatedProps(() => ({
-    strokeDasharray: [circumference * progress, circumference]
+    strokeDasharray: [circumference * fill.value, circumference]
   }))
 
   return (
