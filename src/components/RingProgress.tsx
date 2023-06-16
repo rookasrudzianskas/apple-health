@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import Svg, {Circle, CircleProps} from "react-native-svg";
 import Animated, {useAnimatedProps, useSharedValue, withTiming} from "react-native-reanimated";
+import { AntDesign } from '@expo/vector-icons';
 
 type RingProgressProps = {
   radius?: number;
@@ -52,6 +53,7 @@ const RingProgress = ({radius = 100, strokeWidth = 35, progress}: RingProgressPr
           {...circleDefaultProps}
         />
       </Svg>
+      <AntDesign style={{position: 'absolute', alignSelf: 'center', top: 7}} name="arrowright" size={35} color="black" />
     </View>
   );
 };

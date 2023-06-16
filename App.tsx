@@ -8,6 +8,8 @@ export default function App() {
     <View style={styles.container}>
       <RingProgress
         progress={0.60}
+        radius={150}
+        strokeWidth={50}
       />
       <View style={styles.values}>
         <Value label={'Steps'} value={'43243'} />
