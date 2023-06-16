@@ -7,7 +7,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <RingProgress
-        progress={0.25}
+        progress={0.60}
       />
       <View style={styles.values}>
         <Value label={'Steps'} value={'43243'} />
