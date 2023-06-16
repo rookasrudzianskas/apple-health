@@ -27,18 +27,21 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
     justifyContent: 'center',
     padding: 12,
   },
   value: {
     fontSize: 35,
-    color: '#252525',
+    color: '#AFB3BE',
+    fontWeight: '500'
   },
   valueContainer: {
-    marginRight: 50
+    marginRight: 50,
+    marginVertical: 10
   },
   label: {
-
+    color: 'white',
+    fontSize: 20,
   }
 });
