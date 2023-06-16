@@ -30,6 +30,7 @@ const RingProgress = ({radius = 100, strokeWidth = 20}: RingProgressProps) => {
           r={innerRadius}
           stroke={color}
           strokeWidth={strokeWidth}
+          strokeDasharray={[50, 5]}
         />
       </Svg>
     </View>
