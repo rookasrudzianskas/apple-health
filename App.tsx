@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 const Value = ({label, value}: {label: string, value: string}) => {
   return (
     <View style={styles.valueContainer}>
-      <Text style={styles.label}>Steps</Text>
-      <Text style={styles.value}>42343</Text>
+      <Text style={styles.label}>{label}</Text>
+      <Text style={styles.value}>{value}</Text>
     </View>
   )
 }
@@ -14,10 +14,9 @@ export default function App() {
     <View style={styles.container}>
       <View style={{flexDirection: 'row'}}>
         <Value label={'Steps'} value={'43243'} />
-        <Value label={'Steps'} value={'43243'} />
         <Value label={'Distance'} value={'1.43km'} />
-        <Value label={'Flights Climbed'} value={'2'} />
       </View>
+      <Value label={'Flights Climbed'} value={'2'} />
     </View>
   );
 }
