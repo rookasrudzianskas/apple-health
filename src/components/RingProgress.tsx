@@ -12,6 +12,7 @@ const color = "#EE0F55"
 
 const RingProgress = ({radius = 100, strokeWidth = 20}: RingProgressProps) => {
   const innerRadius = radius - strokeWidth / 2;
+  const circumference = innerRadius * 2 * Math.PI;
 
   return (
     <View style={{width: radius * 2, height: radius * 2, alignSelf: 'center'}}>
@@ -30,7 +31,7 @@ const RingProgress = ({radius = 100, strokeWidth = 20}: RingProgressProps) => {
           r={innerRadius}
           stroke={color}
           strokeWidth={strokeWidth}
-          strokeDasharray={[50, 5]}
+          strokeDasharray={[circumference - 5, 5]}
         />
       </Svg>
     </View>
