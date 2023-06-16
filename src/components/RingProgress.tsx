@@ -1,7 +1,7 @@
 //@ts-nocheck
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
-import Svg, {Circle} from "react-native-svg";
+import Svg, {Circle, CircleProps} from "react-native-svg";
 import Animated, {useAnimatedProps, useSharedValue, withTiming} from "react-native-reanimated";
 
 type RingProgressProps = {
@@ -28,7 +28,7 @@ const RingProgress = ({radius = 100, strokeWidth = 35, progress}: RingProgressPr
     strokeDasharray: [circumference * fill.value, circumference]
   }))
 
-  const circleDefaultProps = {
+  const circleDefaultProps: CircleProps = {
     r: innerRadius,
     cx: radius,
     cy: radius,
@@ -37,23 +37,19 @@ const RingProgress = ({radius = 100, strokeWidth = 35, progress}: RingProgressPr
     strokeWidth: strokeWidth,
     stroke: color,
     strokeLinecap: 'round',
+    rotation: -90,
   }
 
   return (
     <View style={{width: radius * 2, height: radius * 2, alignSelf: 'center'}}>
       <Svg>
         <Circle
-          cx={radius}
-          cy={radius}
-          r={innerRadius}
-          stroke={color}
-          strokeWidth={strokeWidth}
+          {...circleDefaultProps}
           opacity={0.2}
         />
         <AnimatedCircle
           animatedProps={animatedProps}
           {...circleDefaultProps}
-          rotation={-90}
         />
       </Svg>
     </View>
