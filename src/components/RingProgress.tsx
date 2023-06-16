@@ -28,6 +28,17 @@ const RingProgress = ({radius = 100, strokeWidth = 35, progress}: RingProgressPr
     strokeDasharray: [circumference * fill.value, circumference]
   }))
 
+  const circleDefaultProps = {
+    r: innerRadius,
+    cx: radius,
+    cy: radius,
+    originX: radius,
+    originY: radius,
+    strokeWidth: strokeWidth,
+    stroke: color,
+    strokeLinecap: 'round',
+  }
+
   return (
     <View style={{width: radius * 2, height: radius * 2, alignSelf: 'center'}}>
       <Svg>
@@ -41,14 +52,7 @@ const RingProgress = ({radius = 100, strokeWidth = 35, progress}: RingProgressPr
         />
         <AnimatedCircle
           animatedProps={animatedProps}
-          cx={radius}
-          cy={radius}
-          r={innerRadius}
-          originX={radius}
-          originY={radius}
-          stroke={color}
-          strokeWidth={strokeWidth}
-          strokeLinecap={'round'}
+          {...circleDefaultProps}
           rotation={-90}
         />
       </Svg>
