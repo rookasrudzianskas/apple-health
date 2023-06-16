@@ -2,8 +2,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import React from "react";
 import Value from "./src/components/Value";
 import RingProgress from "./src/components/RingProgress";
+import AppleHealthKit from "react-native-health"
 
 export default function App() {
+
+  // AppleHealthKit.initHealthKit({
+  //
+  // })
+
   return (
     <View style={styles.container}>
       <RingProgress
