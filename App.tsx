@@ -1,22 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native';
-
-const Value = ({label, value}: {label: string, value: string}) => {
-  return (
-    <View style={styles.valueContainer}>
-      <Text style={styles.label}>{label}</Text>
-      <Text style={styles.value}>{value}</Text>
-    </View>
-  )
-}
+import React from "react";
+import Value from "./src/components/Value";
+import RingProgress from "./src/components/RingProgress";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={{flexDirection: 'row'}}>
+      <RingProgress />
+      <View style={styles.values}>
         <Value label={'Steps'} value={'43243'} />
         <Value label={'Distance'} value={'1.43km'} />
+        <Value label={'Flights Climbed'} value={'2'} />
       </View>
-      <Value label={'Flights Climbed'} value={'2'} />
     </View>
   );
 }
@@ -28,17 +23,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 12,
   },
-  value: {
-    fontSize: 35,
-    color: '#AFB3BE',
-    fontWeight: '500'
-  },
-  valueContainer: {
-    marginRight: 50,
-    marginVertical: 10
-  },
-  label: {
-    color: 'white',
-    fontSize: 20,
+  values: {
+    flexDirection: 'row',
+    gap: 25,
+    flexWrap: 'wrap',
   }
 });
