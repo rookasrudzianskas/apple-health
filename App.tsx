@@ -1,10 +1,11 @@
-import { StyleSheet, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from "react";
 import Value from "./src/components/Value";
 import RingProgress from "./src/components/RingProgress";
 import AppleHealthKit, {HealthKitPermissions} from "react-native-health"
 import useHealthData from "./src/hooks/useHealthData";
 import {StatusBar} from "expo-status-bar";
+import {AntDesign} from "@expo/vector-icons";
 
 const permissions: HealthKitPermissions = {
   permissions: {
