@@ -6,7 +6,7 @@ import AppleHealthKit, {HealthKitPermissions} from "react-native-health"
 
 const permissions: HealthKitPermissions = {
   permissions: {
-    read: [],
+    read: [AppleHealthKit.Constants.Permissions.],
     write: [],
   }
 }
