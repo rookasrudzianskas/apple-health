@@ -4,6 +4,7 @@ import Value from "./src/components/Value";
 import RingProgress from "./src/components/RingProgress";
 import AppleHealthKit, {HealthKitPermissions} from "react-native-health"
 import useHealthData from "./src/hooks/useHealthData";
+import {StatusBar} from "expo-status-bar";
 
 const permissions: HealthKitPermissions = {
   permissions: {
@@ -30,16 +31,36 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <RingProgress
-        progress={0.60}
-        radius={150}
-        strokeWidth={steps / STEPS_GOAL}
-      />
-      <View style={styles.values}>
-        <Value label={'Steps'} value={steps.toString()} />
-        <Value label={'Distance'} value={`${(distance / 1000).toFixed(2)} km`} />
-        <Value label={'Flights Climbed'} value={`${flights}`} />
+      <View style={styles.datePicker}>
+        <AntDesign
+          onPress={() => changeDate(-1)}
+          name="left"
+          size={20}
+          color="#C3FF53"
+        />
+        <Text style={styles.date}>{date.toDateString()}</Text>
+
+        <AntDesign
+          onPress={() => changeDate(1)}
+          name="right"
+          size={20}
+          color="#C3FF53"
+        />
       </View>
+
+      <RingProgress
+        radius={150}
+        strokeWidth={50}
+        progress={steps / STEPS_GOAL}
+      />
+
+      <View style={styles.values}>
+        <Value label="Steps" value={steps.toString()} />
+        <Value label="Distance" value={`${(distance / 1000).toFixed(2)} km`} />
+        <Value label="Flights Climbed" value={flights.toString()} />
+      </View>
+
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -55,6 +76,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 25,
     flexWrap: 'wrap',
-    marginTop: 80,
-  }
+    marginTop: 100,
+  },
+  datePicker: {
+    alignItems: 'center',
+    padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  date: {
+    color: 'white',
+    fontWeight: '500',
+    fontSize: 20,
+    marginHorizontal: 20,
+  },
 });
