@@ -1,14 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from "react";
+import React, {useEffect} from "react";
 import Value from "./src/components/Value";
 import RingProgress from "./src/components/RingProgress";
-import AppleHealthKit from "react-native-health"
+import AppleHealthKit, {HealthKitPermissions} from "react-native-health"
+
+const permissions: HealthKitPermissions = {
+  permissions: {
+    read: [],
+    write: [],
+  }
+}
 
 export default function App() {
 
-  AppleHealthKit.initHealthKit({
+  useEffect(() => {
+    AppleHealthKit.initHealthKit({
 
-  })
+    })
+  }, [])
 
   return (
     <View style={styles.container}>
