@@ -6,10 +6,10 @@ import AppleHealthKit, {HealthKitPermissions} from "react-native-health"
 
 const permissions: HealthKitPermissions = {
   permissions: {
-    read: [AppleHealthKit.Constants.Permissions.],
+    read: [AppleHealthKit.Constants.Permissions.Steps],
     write: [],
   }
-}
+};
 
 export default function App() {
 
@@ -17,7 +17,7 @@ export default function App() {
     AppleHealthKit.initHealthKit({
 
     })
-  }, [])
+  }, []);
 
   return (
     <View style={styles.container}>
