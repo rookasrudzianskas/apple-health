@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, {useEffect, useState} from "react";
+import { StyleSheet, View } from 'react-native';
+import React, {useState} from "react";
 import Value from "./src/components/Value";
 import RingProgress from "./src/components/RingProgress";
-import AppleHealthKit, {HealthInputOptions, HealthKitPermissions, HealthUnit} from "react-native-health"
+import AppleHealthKit, {HealthKitPermissions} from "react-native-health"
 import useHealthData from "./src/hooks/useHealthData";
 
 const permissions: HealthKitPermissions = {
