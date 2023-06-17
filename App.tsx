@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import Value from "./src/components/Value";
 import RingProgress from "./src/components/RingProgress";
 import AppleHealthKit, {HealthInputOptions, HealthKitPermissions, HealthUnit} from "react-native-health"
+import useHealthData from "./src/hooks/useHealthData";
 
 const permissions: HealthKitPermissions = {
   permissions: {
@@ -18,57 +19,14 @@ const permissions: HealthKitPermissions = {
 const STEPS_GOAL = 10_000;
 
 export default function App() {
-  const [hasPermission, setHasPermission] = useState(false);
-  const [steps, setSteps] = useState(0)
-  const [flights, setFlights] = useState(0)
-  const [distance, setDistance] = useState(0)
+  const [date, setDate] = useState(new Date());
+  const { steps, flights, distance } = useHealthData(date);
 
-  useEffect(() => {
-    AppleHealthKit.initHealthKit(permissions, (err: any) => {
-      if(err) {
-        console.log(err)
-        return;
-      }
-      setHasPermission(true);
-    })
-  }, []);
-
-
-  useEffect(() => {
-    if(!hasPermission) {
-      return;
-    }
-
-    const options: HealthInputOptions = {
-      date: new Date(2023, 5, 15).toISOString(),
-      includeManuallyAdded: false,
-      unit: HealthUnit.meter,
-    };
-
-    AppleHealthKit.getStepCount(options, (err, result) => {
-      if(err) {
-        console.log(err)
-        return;
-      }
-      setSteps(result.value)
-    })
-
-    AppleHealthKit.getFlightsClimbed(options, (err, result) => {
-      if(err) {
-        console.log(err)
-        return;
-      }
-      setFlights(result.value)
-    })
-
-    AppleHealthKit.getDistanceWalkingRunning(options, (err, result) => {
-      if(err) {
-        console.log(err)
-        return;
-      }
-      setDistance(result.value)
-    })
-  }, [hasPermission])
+  const changeDate = (numDays: number) => {
+    const currentDate = new Date(date);
+    currentDate.setDate(currentDate.getDate() + numDays);
+    setDate(currentDate);
+  };
 
   return (
     <View style={styles.container}>
