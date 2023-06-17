@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Value from "./src/components/Value";
 import RingProgress from "./src/components/RingProgress";
-import AppleHealthKit, {HealthKitPermissions} from "react-native-health"
+import AppleHealthKit, {HealthInputOptions, HealthKitPermissions} from "react-native-health"
 
 const permissions: HealthKitPermissions = {
   permissions: {
@@ -11,7 +11,11 @@ const permissions: HealthKitPermissions = {
   }
 };
 
+const STEPS_GOAL = 10_000;
+
 export default function App() {
+  const [hasPermission, setHasPermission] = useState(false);
+  const [steps, setSteps] = useState(0)
 
   useEffect(() => {
     AppleHealthKit.initHealthKit(permissions, (err: any) => {
@@ -19,20 +23,39 @@ export default function App() {
         console.log(err)
         return;
       }
-
-      // We can request the data here
+      setHasPermission(true);
     })
   }, []);
+
+
+  useEffect(() => {
+    if(!hasPermission) {
+      return;
+    }
+
+    const options: HealthInputOptions = {
+      date: new Date().toISOString(),
+      includeManuallyAdded: false
+    };
+
+    AppleHealthKit.getStepCount(options, (err, result) => {
+      if(err) {
+        console.log(err)
+        return;
+      }
+      setSteps(result.value)
+    })
+  }, [hasPermission])
 
   return (
     <View style={styles.container}>
       <RingProgress
         progress={0.60}
         radius={150}
-        strokeWidth={50}
+        strokeWidth={steps / STEPS_GOAL}
       />
       <View style={styles.values}>
-        <Value label={'Steps'} value={'43243'} />
+        <Value label={'Steps'} value={steps.toString()} />
         <Value label={'Distance'} value={'1.43km'} />
         <Value label={'Flights Climbed'} value={'2'} />
       </View>
