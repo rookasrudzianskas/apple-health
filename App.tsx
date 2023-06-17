@@ -79,8 +79,8 @@ export default function App() {
       />
       <View style={styles.values}>
         <Value label={'Steps'} value={steps.toString()} />
-        <Value label={'Distance'} value={flights.toString} />
-        <Value label={'Flights Climbed'} value={`${(distance / 1000).toFixed(2)} km`} />
+        <Value label={'Distance'} value={`${(distance / 1000).toFixed(2)} km`} />
+        <Value label={'Flights Climbed'} value={`${flights}`} />
       </View>
     </View>
   );
