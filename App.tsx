@@ -14,8 +14,13 @@ const permissions: HealthKitPermissions = {
 export default function App() {
 
   useEffect(() => {
-    AppleHealthKit.initHealthKit({
+    AppleHealthKit.initHealthKit(permissions, (err: any) => {
+      if(err) {
+        console.log(err)
+        return;
+      }
 
+      // We can request the data here
     })
   }, []);
 
