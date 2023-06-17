@@ -34,7 +34,7 @@ export default function App() {
     }
 
     const options: HealthInputOptions = {
-      date: new Date().toISOString(),
+      date: new Date(2023, 5, 15).toISOString(),
       includeManuallyAdded: false
     };
 
