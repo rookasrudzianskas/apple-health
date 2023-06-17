@@ -6,9 +6,9 @@ import AppleHealthKit from "react-native-health"
 
 export default function App() {
 
-  // AppleHealthKit.initHealthKit({
-  //
-  // })
+  AppleHealthKit.initHealthKit({
+
+  })
 
   return (
     <View style={styles.container}>
